@@ -1,0 +1,6 @@
+{
+  "version": 2,
+  "name": "socket-game",
+  "builds": [{ "src": "./src/server", "use": "@vercel/node" }],
+  "routes": [{ "src": "/(.*)", "dest": "./src/server" }]
+}
