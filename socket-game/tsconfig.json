@@ -1,7 +1,24 @@
 {
-  "compilerOptions": {
-    "noImplicitAny": false,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
+    "compilerOptions": {
+      "noImplicitAny": false,
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true,
+      "module": "commonjs",
+      "esModuleInterop": false,
+      "target": "es6",
+      "noImplicitAny": true,
+      "moduleResolution": "node",
+      "sourceMap": true,
+      "outDir": "dist",
+      "baseUrl": ".",
+      "paths": {
+          "*": [
+              "node_modules/",
+              "src/types/*"
+          ]
+      }
+    },
+    "include": [
+      "src/**/*"
+  ]
   }
-}
