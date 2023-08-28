@@ -16,6 +16,7 @@ import {
   JoinRoomForm,
   JoinRoomInput,
   LeaveRoomButton,
+  StyledLink,
 } from "./custom-styles";
 
 import { io } from "socket.io-client";
@@ -126,86 +127,100 @@ const App = () => {
 
   return (
     <>
-    <GameContext.Provider value={gameContextValue}>
-      <Appcontainer>
-    <ParticlesBg type="cobweb" bg={true} />
-        <Container>
-          <Header>
-            <GameTitle>
-              <TextWithShadow>
-                {playerSymbol !== ""
-                  ? `PLAYER ${playerSymbol?.toUpperCase()} `
-                  : "XO-CLASH"}
-              </TextWithShadow>
-            </GameTitle>
-            <GameDescription>
-              {!isGameStarted ? (
-                <span className={!error ? "blinking-text" : "error"}>
-                  {error ? error : "Invite your mate and kick his ass !"}
-                </span>
-              ) : (
-                <span className={"blinking-text"}>
-                  {isPlayerTurn ? "Your turn" : "Waiting your rival to draw"}
-                </span>
-              )}
-            </GameDescription>
-          </Header>
-
-          <GameContainer>
-            {!isGameStarted && (
-              <JoinRoomForm onSubmit={joinRoom}>
-                {isJoining && (
-                  <>
-                    <span className="Joining-text">Joining </span>
-
-                    <span className=" Joining-text Joining-points">...</span>
-                  </>
+      <GameContext.Provider value={gameContextValue}>
+        <Appcontainer>
+          <ParticlesBg type="cobweb" bg={true} />
+          <Container>
+            <Header>
+              <GameTitle>
+                <TextWithShadow>
+                  {playerSymbol !== ""
+                    ? `PLAYER ${playerSymbol?.toUpperCase()} `
+                    : "XO-CLASH"}
+                </TextWithShadow>
+              </GameTitle>
+              <GameDescription>
+                {!isGameStarted ? (
+                  <span className={!error ? "blinking-text" : "error"}>
+                    {error ? error : "Invite your mate and kick his ass !"}
+                  </span>
+                ) : (
+                  <span className={"blinking-text"}>
+                    {isPlayerTurn ? "Your turn" : "Waiting your rival to draw"}
+                  </span>
                 )}
-                {!isInRoom && !isJoining && !isWaiting && (
-                  <>
-                    <JoinRoomInput
-                      type="text"
-                      name="room"
-                      onChange={handleRoomNameChange}
-                    />
-                    <JoinRoomButton type="submit">
-                      <img
-                        src="https://img.icons8.com/external-bearicons-detailed-outline-bearicons/64/F8B500/external-Join-social-media-bearicons-detailed-outline-bearicons.png"
-                        alt="join"
+              </GameDescription>
+            </Header>
+
+            <GameContainer>
+              {!isGameStarted && (
+                <JoinRoomForm onSubmit={joinRoom}>
+                  {isJoining && (
+                    <>
+                      <span className="Joining-text">Joining </span>
+
+                      <span className=" Joining-text Joining-points">...</span>
+                    </>
+                  )}
+                  {!isInRoom && !isJoining && !isWaiting && (
+                    <>
+                      <JoinRoomInput
+                        type="text"
+                        name="room"
+                        onChange={handleRoomNameChange}
                       />
-                    </JoinRoomButton>
-                  </>
-                )}
-                {!isJoining && isWaiting && (
-                  <>
-                    <span className="Joining-text">Waiting for opponent</span>
+                      <JoinRoomButton type="submit">
+                        <img
+                          src="https://img.icons8.com/external-bearicons-detailed-outline-bearicons/64/F8B500/external-Join-social-media-bearicons-detailed-outline-bearicons.png"
+                          alt="join"
+                        />
+                      </JoinRoomButton>
+                    </>
+                  )}
+                  {!isJoining && isWaiting && (
+                    <>
+                      <span className="Joining-text">Waiting for opponent</span>
 
-                    <span className=" Joining-text Joining-points">...</span>
-                  </>
-                )}
-              </JoinRoomForm>
-            )}
+                      <span className=" Joining-text Joining-points">...</span>
+                    </>
+                  )}
+                </JoinRoomForm>
+              )}
 
-            <GameContent />
-          </GameContainer>
-        </Container>
+              <GameContent />
+            </GameContainer>
+          </Container>
 
-        <DivFooter>
-          &copy; {currentYear} Abhishek Kumar. All rights reserved. | Powered by
-          KMaar Miscellaneous Studio
-        </DivFooter>
-        {isInRoom && (
-          <LeaveRoomButton onClick={leaveRoom} disabled={!isInRoom}>
-            <img
-              src="https://img.icons8.com/material-sharp/28/ff6347/export.png"
-              alt="leave"
-            />
-          </LeaveRoomButton>
-        )}
-      </Appcontainer>
-    </GameContext.Provider>
-</>
-);
+          <DivFooter>
+            &copy; {currentYear} &nbsp;
+            <StyledLink
+              href="https://kmaar.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Abhishek Kumar
+            </StyledLink>
+            . All rights reserved. | Powered by &nbsp;
+            <StyledLink
+              href="https://kmstudio.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              KMaar Miscellaneous Studio
+            </StyledLink>
+          </DivFooter>
+          {isInRoom && (
+            <LeaveRoomButton onClick={leaveRoom} disabled={!isInRoom}>
+              <img
+                src="https://img.icons8.com/material-sharp/28/ff6347/export.png"
+                alt="leave"
+              />
+            </LeaveRoomButton>
+          )}
+        </Appcontainer>
+      </GameContext.Provider>
+    </>
+  );
 };
 
 export default App;

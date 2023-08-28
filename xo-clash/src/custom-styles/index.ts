@@ -12,7 +12,7 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   color: white;
-  height:auto;
+  height: auto;
   background-color: rgba(255, 255, 255, 0);
 `;
 
@@ -159,7 +159,7 @@ const Footer = styled.footer`
   height: 5vh;
 
   color: white;
-  background:  hsl(39.69, 92%, 86%);
+  background: hsl(39.69, 92%, 86%);
 
   background: linear-gradient(
     45deg,
@@ -194,6 +194,14 @@ const DivFooter = styled.div`
   justify-content: center;
 `;
 
+const StyledLink = styled.a`
+  color: inherit;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`;
 const FooterText = styled.div`
   font-size: 2.2vm;
   font-weight: 400;
@@ -450,20 +458,20 @@ const SquareContainer = styled.div`
   span {
     background: linear-gradient(
       45deg,
-    hsl(39.69, 92%, 86%) 0%,
-    hsl(43.8, 100%, 48.6%) 100%
+      hsl(39.69, 92%, 86%) 0%,
+      hsl(43.8, 100%, 48.6%) 100%
     );
 
     background: -moz-linear-gradient(
       45deg,
-    hsl(39.69, 92%, 86%) 0%,
-    hsl(43.8, 100%, 48.6%) 100%
+      hsl(39.69, 92%, 86%) 0%,
+      hsl(43.8, 100%, 48.6%) 100%
     );
 
     background: -webkit-linear-gradient(
       45deg,
-    hsl(39.69, 92%, 86%) 0%,
-    hsl(43.8, 100%, 48.6%) 100%
+      hsl(39.69, 92%, 86%) 0%,
+      hsl(43.8, 100%, 48.6%) 100%
     );
 
     -webkit-background-clip: text;
@@ -485,18 +493,18 @@ const DisplayScore = styled.div`
     background: #c59000;
     background: -moz-linear-gradient(
       45deg,
-    hsl(39.69, 92%, 86%) 0%,
-    hsl(43.8, 100%, 48.6%) 100%
+      hsl(39.69, 92%, 86%) 0%,
+      hsl(43.8, 100%, 48.6%) 100%
     );
     background: -webkit-linear-gradient(
       45deg,
-    hsl(39.69, 92%, 86%) 0%,
-    hsl(43.8, 100%, 48.6%) 100%
+      hsl(39.69, 92%, 86%) 0%,
+      hsl(43.8, 100%, 48.6%) 100%
     );
     background: linear-gradient(
       45deg,
-    hsl(39.69, 92%, 86%) 0%,
-    hsl(43.8, 100%, 48.6%) 100%
+      hsl(39.69, 92%, 86%) 0%,
+      hsl(43.8, 100%, 48.6%) 100%
     );
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#22c1c3",endColorstr="#31fd2d",GradientType=1);
     -webkit-background-clip: text;
@@ -672,4 +680,5 @@ export {
   JoinRoomForm,
   JoinRoomInput,
   LeaveRoomButton,
+  StyledLink,
 };
